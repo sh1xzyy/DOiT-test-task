@@ -1,0 +1,45 @@
+body {
+	font-family: 'Manrope', sans-serif;
+	color: black;
+	background-color: white;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+ul,
+ol {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button {
+	cursor: pointer;
+	padding: 0;
+	line-height: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	object-fit: contain;
+}
