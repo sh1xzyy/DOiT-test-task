@@ -13,6 +13,19 @@ import store from '@/redux/store'
 const RootLayout = ({ children }) => {
 	return (
 		<html lang='uk'>
+			<head>
+				<meta charSet='UTF-8' />
+				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+				<meta
+					name='description'
+					content='Простий сайт для пошуку, створення та видалення постів. Зручний інтерфейс для керування контентом.'
+				/>
+				<meta
+					name='keywords'
+					content='пошук постів, створення постів, видалення постів, керування контентом, блог'
+				/>
+				<title>DOiT MVP</title>
+			</head>
 			<body>
 				<Provider store={store}>
 					<AppProvider>
