@@ -1,5 +1,10 @@
+'use client'
+
+import { useParams } from 'next/navigation'
+
 const Page = () => {
-	return <div>Post Info Page</div>
+	const id = useParams()
+	return <div>page {id}</div>
 }
 
 export default Page
