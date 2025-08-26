@@ -3,7 +3,7 @@
 import { Box, Container } from '@mui/material'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import { getStylesByMode } from '@/utils/common/getStylesByMode'
-import ActionButtons from './heroParts/actionButtons'
+import ActionButtons from './heroParts/ActionButtons'
 import TextWrapper from './heroParts/TextWrapper'
 
 const Hero = () => {
