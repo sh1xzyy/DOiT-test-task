@@ -1,15 +1,15 @@
-import { getPostInfoByIdThunk } from '@/redux/post/operations'
+import { getPostCommentsByIdThunk } from '@/redux/post/operations'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 
-const useGetPostInfo = id => {
+const useGetPostComments = id => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		;(async () => {
 			try {
-				await dispatch(getPostInfoByIdThunk(id)).unwrap()
+				await dispatch(getPostCommentsByIdThunk(id)).unwrap()
 			} catch (error) {
 				toast.error(error)
 			}
@@ -17,4 +17,4 @@ const useGetPostInfo = id => {
 	}, [dispatch, id])
 }
 
-export default useGetPostInfo
+export default useGetPostComments

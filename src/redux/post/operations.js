@@ -19,19 +19,33 @@ export const getPostsByQueryThunk = createAsyncThunk(
 )
 
 export const getPostInfoByIdThunk = createAsyncThunk(
-	'/posts/{id}',
+	'/posts/getPostInfo/{id}',
 	async (id, { rejectWithValue }) => {
 		try {
 			const response = await axios.get(`${API_KEY}/posts/${id}`)
 			return response.data
 		} catch (error) {
-			return rejectWithValue('Something went wrong with uploading post.')
+			return rejectWithValue('Something went wrong with uploading post info.')
+		}
+	}
+)
+
+export const getPostCommentsByIdThunk = createAsyncThunk(
+	'/posts/getPostComments/{id}',
+	async (id, { rejectWithValue }) => {
+		try {
+			const response = await axios.get(`${API_KEY}/posts/${id}/comments`)
+			return response.data
+		} catch (error) {
+			return rejectWithValue(
+				'Something went wrong with uploading post comments.'
+			)
 		}
 	}
 )
 
 export const deletePostByIdThunk = createAsyncThunk(
-	'/posts/{id}',
+	'/posts/deletePost/{id}',
 	async (id, { rejectWithValue }) => {
 		try {
 			const response = await axios.delete(`${API_KEY}/posts/${id}`)

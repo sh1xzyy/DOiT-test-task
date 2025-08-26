@@ -1,6 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit'
 import {
 	deletePostByIdThunk,
+	getPostCommentsByIdThunk,
 	getPostInfoByIdThunk,
 	getPostsByQueryThunk,
 } from './operations'
@@ -8,7 +9,8 @@ import {
 const initialState = {
 	postsList: [],
 	isLoading: false,
-	postInfo: [],
+	postInfo: {},
+	postComments: [],
 }
 
 const postSlice = createSlice({
@@ -16,8 +18,8 @@ const postSlice = createSlice({
 	initialState,
 	extraReducers: builder => {
 		builder
-			.addCase(getPostsByQueryThunk.fulfilled, (state, { payload }) => {
-				state.postsList = payload
+			.addCase(getPostsByQueryThunk.fulfilled, (state, action) => {
+				state.postsList = action.payload
 				state.isLoading = false
 			})
 			.addCase(deletePostByIdThunk.fulfilled, (state, action) => {
@@ -25,11 +27,20 @@ const postSlice = createSlice({
 				state.postsList = state.postsList.filter(post => post.id !== id)
 				state.isLoading = false
 			})
+			.addCase(getPostCommentsByIdThunk.fulfilled, (state, action) => {
+				state.postComments = action.payload
+				state.isLoading = false
+			})
+			.addCase(getPostInfoByIdThunk.fulfilled, (state, action) => {
+				state.postInfo = action.payload
+				state.isLoading = false
+			})
 			.addMatcher(
 				isAnyOf(
 					getPostsByQueryThunk.pending,
 					getPostInfoByIdThunk.pending,
-					deletePostByIdThunk.pending
+					deletePostByIdThunk.pending,
+					getPostCommentsByIdThunk.pending
 				),
 				state => {
 					state.isLoading = true
@@ -39,7 +50,8 @@ const postSlice = createSlice({
 				isAnyOf(
 					getPostsByQueryThunk.rejected,
 					getPostInfoByIdThunk.rejected,
-					deletePostByIdThunk.rejected
+					deletePostByIdThunk.rejected,
+					getPostCommentsByIdThunk.rejected
 				),
 				state => {
 					state.isLoading = false
