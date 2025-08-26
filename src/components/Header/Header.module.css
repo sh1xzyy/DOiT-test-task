@@ -1,0 +1,23 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #2196f3;
+}
+
+.leftSide {
+	display: flex;
+	align-items: center;
+	column-gap: 20px;
+}
+
+.link {
+	cursor: pointer;
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: inherit;
+	transition: color linear 250ms;
+	&:hover {
+		color: #e7e7e7;
+	}
+}
