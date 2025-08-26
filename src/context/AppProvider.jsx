@@ -1,11 +1,14 @@
+import DialogModalProvider from './DialogModalContext/DialogModalProvider'
 import { TemporaryDrawerProvider } from './TemporaryDrawerContext/TemporaryDrawerProvider'
 import { ThemeProvider } from './ThemeContext/ThemeProvider'
 
 const AppProvider = ({ children }) => {
 	return (
-		<TemporaryDrawerProvider>
-			<ThemeProvider>{children}</ThemeProvider>
-		</TemporaryDrawerProvider>
+		<DialogModalProvider>
+			<TemporaryDrawerProvider>
+				<ThemeProvider>{children}</ThemeProvider>
+			</TemporaryDrawerProvider>
+		</DialogModalProvider>
 	)
 }
 
