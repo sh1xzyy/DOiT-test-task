@@ -8,17 +8,20 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import { toggleTheme } from '@/utils/header/toggleTheme'
 import css from './Header.module.css'
-import Link from 'next/link'
 import { useTemporaryDrawerContext } from '@/context/TemporaryDrawerContext/useTemporaryDrawerContext'
 import { toggleDrawer } from '@/utils/header/toggleDrawer'
 import { Typography } from '@mui/material'
 import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import { getIconByMode } from '@/utils/common/getIconByMode'
+import { useParams, usePathname } from 'next/navigation'
+import { getTitleByUrl } from '@/utils/header/getTitleByUrl'
 
-export default function Header() {
-	const { mode, setMode } = useThemeContext()
+const Header = () => {
 	const { setIsDrawerOpen } = useTemporaryDrawerContext()
+	const { mode, setMode } = useThemeContext()
+	const pathname = usePathname()
+	const { id } = useParams()
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
@@ -34,13 +37,8 @@ export default function Header() {
 						>
 							<MenuIcon />
 						</IconButton>
-						<Typography
-							variant='h6'
-							component={Link}
-							href='/'
-							className={css.link}
-						>
-							DOiT MVP
+						<Typography variant='h6' component={'div'}>
+							{getTitleByUrl(pathname, id)}
 						</Typography>
 					</div>
 					<IconButton color='inherit' onClick={() => toggleTheme(setMode)}>
@@ -51,3 +49,5 @@ export default function Header() {
 		</Box>
 	)
 }
+
+export default Header
