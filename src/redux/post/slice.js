@@ -37,7 +37,7 @@ const postSlice = createSlice({
 				state.isLoading = false
 			})
 			.addCase(createNewPostThunk.fulfilled, (state, action) => {
-				state.postsList.unshift(action.payload)
+				state.postsList.push(action.payload)
 				state.isLoading = false
 			})
 			.addMatcher(

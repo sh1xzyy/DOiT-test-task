@@ -4,6 +4,7 @@ import { DialogContent, Divider, Typography } from '@mui/material'
 import { useFormikContext } from 'formik'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import ActionButtons from './parts/ActionButtons'
+import { getStylesByMode } from '@/utils/common/getStylesByMode'
 
 const DialogPreviewContent = () => {
 	const { values } = useFormikContext()
@@ -15,7 +16,7 @@ const DialogPreviewContent = () => {
 					variant='h5'
 					component='h4'
 					sx={{
-						color: getStylesByMode(mode, '#181818', '#f5f5f5'),
+						color: getStylesByMode(mode, '#181818', '#ffffff'),
 						mb: '10px',
 					}}
 				>
@@ -25,7 +26,7 @@ const DialogPreviewContent = () => {
 					variant='body1'
 					component='p'
 					sx={{
-						color: getStylesByMod(mode, '#181818', '#b3b3b3'),
+						color: getStylesByMode(mode, '#181818', '#ffffff'),
 					}}
 				>
 					{values.body}

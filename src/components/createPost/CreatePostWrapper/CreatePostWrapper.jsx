@@ -7,59 +7,63 @@ import DialogModal from '@/components/common/DialogModal/DialogModal'
 import DialogPreviewContent from '../DialogPreviewContent/DialogPreviewContent'
 import { useCreatePostStepContext } from '@/context/CreatePostStepContext/useCreatePostStepContext'
 import useCreateNewPost from '@/features/posts/createNewPost/useCreateNewPost'
-import { useRouter } from 'next/navigation'
 import { getStylesByMode } from '@/utils/common/getStylesByMode'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import PostStepper from './parts/PostStepper/PostStepper'
 import PostTitleField from './parts/PostTitleField'
 import PostTextArea from './parts/PostTextArea'
 import ActionButtons from './parts/ActionButtons'
+import SnackbarWrapper from '@/components/common/SnackbarWrapper/SnackbarWrapper'
+import { useState } from 'react'
 
 const CreatePostWrapper = () => {
 	const { isDialogModalPreviewOpen, setIsDialogModalPreviewOpen } =
 		useDialogModalPreviewContext()
 	const { validationSchema, handleSubmit, initialValues } = useCreateNewPost()
-	const { step, setStep } = useCreatePostStepContext()
+	const [snackbar, setSnackbar] = useState({
+		open: false,
+		message: '',
+	})
+	const { step } = useCreatePostStepContext()
 	const { mode } = useThemeContext()
-	const router = useRouter()
 
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				gap: '35px',
-				p: '30px 25px',
-				bgcolor: getStylesByMode(mode, '#ffffff', '#2b2b2bff'),
-				boxShadow: '0px 2px 11px 3px rgba(0,0,0,0.3)',
-			}}
-		>
-			<PostStepper />
-			<Formik
-				initialValues={initialValues}
-				onSubmit={(values, actions) => {
-					handleSubmit(values, actions)
-					router.push('/posts')
-					setIsDialogModalPreviewOpen(false)
-					setStep(1)
+		<>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '35px',
+					p: '30px 25px',
+					bgcolor: getStylesByMode(mode, '#ffffff', '#2b2b2bff'),
+					boxShadow: '0px 2px 11px 3px rgba(0,0,0,0.3)',
 				}}
-				validationSchema={validationSchema(step)}
 			>
-				<Form>
-					{step === 1 && <PostTitleField />}
-					{step === 2 && <PostTextArea />}
+				<PostStepper />
+				<Formik
+					initialValues={initialValues}
+					onSubmit={(values, actions) =>
+						handleSubmit(values, actions, setSnackbar)
+					}
+					validationSchema={validationSchema(step)}
+				>
+					<Form>
+						{step === 1 && <PostTitleField />}
+						{step === 2 && <PostTextArea />}
 
-					<DialogModal
-						isDialogModalOpen={isDialogModalPreviewOpen}
-						setIsDialogModalOpen={setIsDialogModalPreviewOpen}
-						title='Попередній перегляд'
-					>
-						<DialogPreviewContent />
-					</DialogModal>
-					<ActionButtons />
-				</Form>
-			</Formik>
-		</Box>
+						<DialogModal
+							isDialogModalOpen={isDialogModalPreviewOpen}
+							setIsDialogModalOpen={setIsDialogModalPreviewOpen}
+							title='Попередній перегляд'
+						>
+							<DialogPreviewContent />
+						</DialogModal>
+						<ActionButtons />
+					</Form>
+				</Formik>
+			</Box>
+			<SnackbarWrapper snackbar={snackbar} setSnackbar={setSnackbar} />
+		</>
 	)
 }
 

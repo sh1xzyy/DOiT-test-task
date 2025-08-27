@@ -1,9 +1,8 @@
 import { getPostInfoByIdThunk } from '@/redux/post/operations'
 import { useEffect } from 'react'
-import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 
-const useGetPostInfo = id => {
+const useGetPostInfo = (id, setSnackbar) => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -11,10 +10,13 @@ const useGetPostInfo = id => {
 			try {
 				await dispatch(getPostInfoByIdThunk(id)).unwrap()
 			} catch (error) {
-				toast.error(error)
+				setSnackbar({
+					open: true,
+					message: error.message,
+				})
 			}
 		})()
-	}, [dispatch, id])
+	}, [dispatch, id, setSnackbar])
 }
 
 export default useGetPostInfo

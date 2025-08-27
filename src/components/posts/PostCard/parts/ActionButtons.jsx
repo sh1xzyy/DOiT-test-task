@@ -7,7 +7,7 @@ import useDeletePost from '@/features/posts/deletePost/useDeletePost'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import Link from 'next/link'
 
-const ActionButtons = ({ data: { router, id } }) => {
+const ActionButtons = ({ data: { router, id }, setSnackbar }) => {
 	const { handleDelete } = useDeletePost()
 
 	return (
@@ -27,7 +27,7 @@ const ActionButtons = ({ data: { router, id } }) => {
 				}}
 				startIcon={<DeleteIcon sx={{ color: '#ffffff' }} />}
 				onClick={() => {
-					handleDelete(id)
+					handleDelete(id, setSnackbar)
 					router.push('/posts')
 				}}
 			>

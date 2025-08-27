@@ -25,6 +25,9 @@ const PostTitleField = () => {
 				sx={{
 					color: '#181818',
 				}}
+				onKeyDown={e => {
+					if (e.key === 'Enter') e.preventDefault()
+				}}
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position='start'>

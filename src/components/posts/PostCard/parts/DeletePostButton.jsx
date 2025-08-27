@@ -4,7 +4,7 @@ import { IconButton } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 import useDeletePost from '@/features/posts/deletePost/useDeletePost'
 
-const DeletePostButton = ({ id }) => {
+const DeletePostButton = ({ id, setSnackbar }) => {
 	const { handleDelete } = useDeletePost()
 
 	return (
@@ -17,7 +17,7 @@ const DeletePostButton = ({ id }) => {
 				height: '34px',
 			}}
 			aria-label='delete button'
-			onClick={() => handleDelete(id)}
+			onClick={() => handleDelete(id, setSnackbar)}
 		>
 			<DeleteIcon sx={{ color: '#f35b4a' }} />
 		</IconButton>

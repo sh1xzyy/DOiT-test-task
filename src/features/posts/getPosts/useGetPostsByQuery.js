@@ -3,17 +3,19 @@
 import { getPostsByQueryThunk } from '@/redux/post/operations'
 import { useDispatch } from 'react-redux'
 import { initialValues } from './initialValues'
-import toast from 'react-hot-toast'
 
 const useGetPostsByQuery = () => {
 	const dispatch = useDispatch()
 
-	const handleSubmit = async (query, actions) => {
+	const handleSubmit = async (query, actions, setSnackbar) => {
 		try {
 			await dispatch(getPostsByQueryThunk(query)).unwrap()
 			actions.resetForm()
 		} catch (error) {
-			toast.error(error)
+			setSnackbar({
+				open: true,
+				message: error.message,
+			})
 		}
 	}
 

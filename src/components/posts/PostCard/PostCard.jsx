@@ -10,34 +10,45 @@ import DeletePostButton from './parts/DeletePostButton'
 import PostCardDescription from './parts/PostCardDescription'
 import NavigateButton from './parts/NavigateButton'
 import ActionButtons from './parts/ActionButtons'
+import { useState } from 'react'
+import SnackbarWrapper from '@/components/common/SnackbarWrapper/SnackbarWrapper'
 
 const PostCard = ({ data: { id, title, body }, type }) => {
+	const [snackbar, setSnackbar] = useState({
+		open: false,
+		message: '',
+	})
 	const { mode } = useThemeContext()
 	const router = useRouter()
 
 	return (
-		<Card sx={{ minWidth: '100%', position: 'relative' }}>
-			<CardContent
-				sx={{
-					p: '15px 15px 10px 15px',
-					pb: type === 'cardInfo' ? '30px' : undefined,
-				}}
-			>
-				<PostCardHeader data={{ id, title, mode, type }} />
+		<>
+			<Card sx={{ minWidth: '100%', position: 'relative' }}>
+				<CardContent
+					sx={{
+						p: '15px 15px 10px 15px',
+						pb: type === 'cardInfo' ? '30px' : undefined,
+					}}
+				>
+					<PostCardHeader data={{ id, title, mode, type }} />
 
-				{type === 'common' && <DeletePostButton id={id} />}
+					{type === 'common' && (
+						<DeletePostButton id={id} setSnackbar={setSnackbar} />
+					)}
 
-				<PostCardDescription data={{ mode, type, body }} />
-			</CardContent>
+					<PostCardDescription data={{ mode, type, body }} />
+				</CardContent>
 
-			<CardActions>
-				{type === 'common' ? (
-					<NavigateButton data={{ router, id }} />
-				) : (
-					<ActionButtons data={{ router, id }} />
-				)}
-			</CardActions>
-		</Card>
+				<CardActions>
+					{type === 'common' ? (
+						<NavigateButton data={{ router, id }} />
+					) : (
+						<ActionButtons data={{ router, id }} setSnackbar={setSnackbar} />
+					)}
+				</CardActions>
+			</Card>
+			<SnackbarWrapper snackbar={snackbar} setSnackbar={setSnackbar} />
+		</>
 	)
 }
 

@@ -13,7 +13,10 @@ export const getPostsByQueryThunk = createAsyncThunk(
 			})
 			return response.data
 		} catch (error) {
-			return rejectWithValue('Something went wrong with uploading posts.')
+			return rejectWithValue(
+				error.response?.data?.message ||
+					'Something went wrong with uploading posts.'
+			)
 		}
 	}
 )
@@ -25,7 +28,10 @@ export const getPostInfoByIdThunk = createAsyncThunk(
 			const response = await axios.get(`${API_KEY}/posts/${id}`)
 			return response.data
 		} catch (error) {
-			return rejectWithValue('Something went wrong with uploading post info.')
+			return rejectWithValue(
+				error.response?.data?.message ||
+					'Something went wrong with uploading post info.'
+			)
 		}
 	}
 )
@@ -38,7 +44,9 @@ export const getPostCommentsByIdThunk = createAsyncThunk(
 			return response.data
 		} catch (error) {
 			return rejectWithValue(
-				'Something went wrong with uploading post comments.'
+				error.response?.data?.message ||
+					'Something went wrong with uploading post comments.' ||
+					error.message
 			)
 		}
 	}
@@ -51,7 +59,10 @@ export const deletePostByIdThunk = createAsyncThunk(
 			const response = await axios.delete(`${API_KEY}/posts/${id}`)
 			return response.data
 		} catch (error) {
-			return rejectWithValue('Something went wrong with deleting post.')
+			return rejectWithValue(
+				error.response?.data?.message ||
+					'Something went wrong with deleting post.'
+			)
 		}
 	}
 )
@@ -63,7 +74,10 @@ export const createNewPostThunk = createAsyncThunk(
 			const response = await axios.post(`${API_KEY}/posts`, values)
 			return response.data
 		} catch (error) {
-			return rejectWithValue('Something went wrong with creating new post.')
+			return rejectWithValue(
+				error.response?.data?.message ||
+					'Something went wrong with creating new post.'
+			)
 		}
 	}
 )

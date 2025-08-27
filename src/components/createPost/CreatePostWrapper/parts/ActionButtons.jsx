@@ -6,14 +6,11 @@ import { useDialogModalPreviewContext } from '@/context/DialogModalPreviewContex
 import { useFormikContext } from 'formik'
 import { handleNext } from '@/utils/createPost/handleNext'
 import { useCreatePostStepContext } from '@/context/CreatePostStepContext/useCreatePostStepContext'
-import { getStylesByMode } from '@/utils/common/getStylesByMode'
-import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 
 const ActionButtons = () => {
 	const { setIsDialogModalPreviewOpen } = useDialogModalPreviewContext()
 	const { validateForm, setTouched } = useFormikContext()
 	const { step, setStep } = useCreatePostStepContext()
-	const { mode } = useThemeContext()
 
 	return (
 		<Stack
