@@ -3,8 +3,8 @@
 import { Box } from '@mui/material'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import { getStylesByMode } from '@/utils/common/getStylesByMode'
-import ActionButtons from './heroParts/ActionButtons'
-import TextWrapper from './heroParts/TextWrapper'
+import TextWrapper from './parts/TextWrapper'
+import ActionButtons from './parts/ActionButtons'
 
 const Hero = () => {
 	const { mode } = useThemeContext()

@@ -5,11 +5,11 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import { useRouter } from 'next/navigation'
-import PostCardHeader from './postCardParts/PostCardHeader'
-import DeletePostButton from './postCardParts/DeletePostButton'
-import PostCardDescription from './postCardParts/PostCardDescription'
-import NavigateButton from './postCardParts/NavigateButton'
-import ActionButtons from './postCardParts/ActionButtons'
+import PostCardHeader from './parts/PostCardHeader'
+import DeletePostButton from './parts/DeletePostButton'
+import PostCardDescription from './parts/PostCardDescription'
+import NavigateButton from './parts/NavigateButton'
+import ActionButtons from './parts/ActionButtons'
 
 const PostCard = ({ data: { id, title, body }, type }) => {
 	const { mode } = useThemeContext()

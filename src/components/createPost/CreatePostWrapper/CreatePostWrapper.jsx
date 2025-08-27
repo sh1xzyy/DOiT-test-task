@@ -2,10 +2,6 @@
 
 import Box from '@mui/material/Box'
 import { Formik, Form } from 'formik'
-import PostStepper from '../createPostParts/PostStepper'
-import PostTitleField from '../createPostParts/PostTitleField'
-import PostTextArea from '../createPostParts/PostTextArea'
-import ActionButtons from '../createPostParts/ActionButtons'
 import { useDialogModalPreviewContext } from '@/context/DialogModalPreviewContext/useDialogModalPreviewContext'
 import DialogModal from '@/components/common/DialogModal/DialogModal'
 import DialogPreviewContent from '../DialogPreviewContent/DialogPreviewContent'
@@ -14,6 +10,10 @@ import useCreateNewPost from '@/features/posts/createNewPost/useCreateNewPost'
 import { useRouter } from 'next/navigation'
 import { getStylesByMode } from '@/utils/common/getStylesByMode'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
+import PostStepper from './parts/PostStepper/PostStepper'
+import PostTitleField from './parts/PostTitleField'
+import PostTextArea from './parts/PostTextArea'
+import ActionButtons from './parts/ActionButtons'
 
 const CreatePostWrapper = () => {
 	const { isDialogModalPreviewOpen, setIsDialogModalPreviewOpen } =

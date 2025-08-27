@@ -15,7 +15,7 @@ const AddPostButton = () => {
 				right: 16,
 				'& .MuiFab-primary': {
 					bgcolor: '#1976d2',
-					color: '#fff',
+					color: '#ffffff',
 					'&:hover': {
 						bgcolor: '#115293',
 					},

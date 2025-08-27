@@ -2,8 +2,8 @@
 
 import { DialogContent, Divider, Typography } from '@mui/material'
 import { useFormikContext } from 'formik'
-import ActionButtons from '../dialogModalParts/ActionButtons'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
+import ActionButtons from './parts/ActionButtons'
 
 const DialogPreviewContent = () => {
 	const { values } = useFormikContext()

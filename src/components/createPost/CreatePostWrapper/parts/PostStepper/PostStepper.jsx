@@ -6,8 +6,7 @@ import StepLabel from '@mui/material/StepLabel'
 import { useCreatePostStepContext } from '@/context/CreatePostStepContext/useCreatePostStepContext'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import { getStylesByMode } from '@/utils/common/getStylesByMode'
-
-const steps = ['Заголовок', 'Тіло', 'Попередній перегляд']
+import { steps } from './steps'
 
 const PostStepper = () => {
 	const { step } = useCreatePostStepContext()
