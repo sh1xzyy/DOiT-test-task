@@ -22,7 +22,7 @@ const SearchField = () => {
 				>
 					<Field
 						component={TextField}
-						name='query'
+						name='title'
 						variant='outlined'
 						sx={{
 							width: '100%',

@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit'
 import {
+	createNewPostThunk,
 	deletePostByIdThunk,
 	getPostCommentsByIdThunk,
 	getPostInfoByIdThunk,
@@ -35,12 +36,17 @@ const postSlice = createSlice({
 				state.postInfo = action.payload
 				state.isLoading = false
 			})
+			.addCase(createNewPostThunk.fulfilled, (state, action) => {
+				state.postsList.unshift(action.payload)
+				state.isLoading = false
+			})
 			.addMatcher(
 				isAnyOf(
 					getPostsByQueryThunk.pending,
 					getPostInfoByIdThunk.pending,
 					deletePostByIdThunk.pending,
-					getPostCommentsByIdThunk.pending
+					getPostCommentsByIdThunk.pending,
+					createNewPostThunk.pending
 				),
 				state => {
 					state.isLoading = true
@@ -51,7 +57,8 @@ const postSlice = createSlice({
 					getPostsByQueryThunk.rejected,
 					getPostInfoByIdThunk.rejected,
 					deletePostByIdThunk.rejected,
-					getPostCommentsByIdThunk.rejected
+					getPostCommentsByIdThunk.rejected,
+					createNewPostThunk.rejected
 				),
 				state => {
 					state.isLoading = false

@@ -55,3 +55,15 @@ export const deletePostByIdThunk = createAsyncThunk(
 		}
 	}
 )
+
+export const createNewPostThunk = createAsyncThunk(
+	'/posts/createNewPost/',
+	async (values, { rejectWithValue }) => {
+		try {
+			const response = await axios.post(`${API_KEY}/posts`, values)
+			return response.data
+		} catch (error) {
+			return rejectWithValue('Something went wrong with creating new post.')
+		}
+	}
+)

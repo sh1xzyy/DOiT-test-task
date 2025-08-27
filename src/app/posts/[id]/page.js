@@ -1,19 +1,21 @@
 'use client'
 
-import PostCard from '@/components/posts/PostCard/PostCard'
 import useGetPostInfo from '@/features/posts/getPostInfo/useGetPostInfo'
 import { selectPostInfo } from '@/redux/post/selectors'
-import { Container } from '@mui/system'
+import { Container } from '@mui/material'
 import { notFound, useParams } from 'next/navigation'
 import { useSelector } from 'react-redux'
 import css from './page.module.css'
 import useGetPostComments from '@/features/posts/getPostComments/useGetPostComments'
-import { useDialogModalContext } from '@/context/DialogModalContext/useDialogModalContext'
-import DialogModal from '@/components/comments/DialogModal/DialogModal'
+import { useDialogModalCommentContext } from '@/context/DialogModalCommentContext/useDialogModalCommentContext'
 import { useEffect } from 'react'
+import PostCard from '../../../components/posts/PostCard/PostCard'
+import DialogModal from '@/components/common/DialogModal/DialogModal'
+import DialogCommentContent from '@/components/comments/DialogCommentContent/DialogCommentContent'
 
 const Page = () => {
-	const { isDialogModalOpen } = useDialogModalContext()
+	const { isDialogModalCommentOpen, setIsDialogModalCommentOpen } =
+		useDialogModalCommentContext()
 	const postInfo = useSelector(selectPostInfo)
 	const { id } = useParams()
 
@@ -30,7 +32,15 @@ const Page = () => {
 
 	return (
 		<>
-			{isDialogModalOpen && <DialogModal />}
+			{isDialogModalCommentOpen && (
+				<DialogModal
+					isDialogModalOpen={isDialogModalCommentOpen}
+					setIsDialogModalOpen={setIsDialogModalCommentOpen}
+					title='Коментарі'
+				>
+					<DialogCommentContent />
+				</DialogModal>
+			)}
 			<section className={css.section}>
 				<Container>
 					<PostCard data={postInfo} type='cardInfo' />

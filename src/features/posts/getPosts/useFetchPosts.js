@@ -12,7 +12,7 @@ const useFetchPosts = () => {
 	useEffect(() => {
 		;(async () => {
 			try {
-				await dispatch(getPostsByQueryThunk(initialValues.query)).unwrap()
+				await dispatch(getPostsByQueryThunk(initialValues.title)).unwrap()
 			} catch (error) {
 				toast.error(error)
 			}

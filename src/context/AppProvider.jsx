@@ -1,14 +1,20 @@
-import DialogModalProvider from './DialogModalContext/DialogModalProvider'
+import CreatePostStepProvider from './CreatePostStepContext/CreatePostStepProvider'
+import DialogModalCommentProvider from './DialogModalCommentContext/DialogModalCommentProvider'
+import DialogModalPreviewProvider from './DialogModalPreviewContext/DialogModalPreviewProvider'
 import { TemporaryDrawerProvider } from './TemporaryDrawerContext/TemporaryDrawerProvider'
 import { ThemeProvider } from './ThemeContext/ThemeProvider'
 
 const AppProvider = ({ children }) => {
 	return (
-		<DialogModalProvider>
-			<TemporaryDrawerProvider>
-				<ThemeProvider>{children}</ThemeProvider>
-			</TemporaryDrawerProvider>
-		</DialogModalProvider>
+		<CreatePostStepProvider>
+			<DialogModalPreviewProvider>
+				<DialogModalCommentProvider>
+					<TemporaryDrawerProvider>
+						<ThemeProvider>{children}</ThemeProvider>
+					</TemporaryDrawerProvider>
+				</DialogModalCommentProvider>
+			</DialogModalPreviewProvider>
+		</CreatePostStepProvider>
 	)
 }
 
