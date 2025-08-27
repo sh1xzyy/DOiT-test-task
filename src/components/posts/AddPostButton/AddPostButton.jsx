@@ -1,3 +1,5 @@
+'use client'
+
 import SpeedDial from '@mui/material/SpeedDial'
 import SpeedDialIcon from '@mui/material/SpeedDialIcon'
 import { useRouter } from 'next/navigation'

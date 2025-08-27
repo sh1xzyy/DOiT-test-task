@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Container } from '@mui/material'
+import { Box } from '@mui/material'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import { getStylesByMode } from '@/utils/common/getStylesByMode'
 import ActionButtons from './heroParts/ActionButtons'

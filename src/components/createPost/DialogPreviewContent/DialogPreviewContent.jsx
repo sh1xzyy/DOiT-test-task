@@ -3,7 +3,6 @@
 import { DialogContent, Divider, Typography } from '@mui/material'
 import { useFormikContext } from 'formik'
 import ActionButtons from '../dialogModalParts/ActionButtons'
-import { getStylesByMode } from '@/utils/common/getStylesByMode'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 
 const DialogPreviewContent = () => {
@@ -26,7 +25,7 @@ const DialogPreviewContent = () => {
 					variant='body1'
 					component='p'
 					sx={{
-						color: getStylesByMode(mode, '#181818', '#b3b3b3'),
+						color: getStylesByMod(mode, '#181818', '#b3b3b3'),
 					}}
 				>
 					{values.body}

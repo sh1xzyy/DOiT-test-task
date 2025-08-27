@@ -1,3 +1,5 @@
+'use client'
+
 import { Badge, IconButton } from '@mui/material'
 import CommentIcon from '@mui/icons-material/Comment'
 import { useDialogModalCommentContext } from '@/context/DialogModalCommentContext/useDialogModalCommentContext'

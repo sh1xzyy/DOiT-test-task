@@ -1,3 +1,5 @@
+'use client'
+
 import { IconButton } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 import useDeletePost from '@/features/posts/deletePost/useDeletePost'

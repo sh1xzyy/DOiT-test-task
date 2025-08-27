@@ -1,3 +1,5 @@
+'use client'
+
 import { useSelector } from 'react-redux'
 import Comment from '../Comment/Comment'
 import { List } from '@mui/material'
