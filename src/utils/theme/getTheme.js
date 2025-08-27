@@ -6,7 +6,7 @@ export const getTheme = (mode = 'light') => {
 		palette: {
 			mode,
 			primary: {
-				main: getStylesByMode(mode, '#1976d2', '#90caf9'),
+				main: getStylesByMode(mode, '#2196f3', '#90caf9'),
 			},
 			secondary: {
 				main: getStylesByMode(mode, '#9c27b0', '#ce93d8'),

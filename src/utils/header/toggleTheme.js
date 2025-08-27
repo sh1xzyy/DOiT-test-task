@@ -1,3 +1,5 @@
-export const toggleTheme = setMode => {
-	setMode(prev => (prev === 'light' ? 'dark' : 'light'))
+export const toggleTheme = (mode, setMode) => {
+	const newMode = mode === 'light' ? 'dark' : 'light'
+	localStorage.setItem('theme', newMode)
+	setMode(newMode)
 }

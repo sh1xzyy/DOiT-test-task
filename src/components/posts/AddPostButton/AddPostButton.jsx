@@ -1,3 +1,5 @@
+'use client'
+
 import SpeedDial from '@mui/material/SpeedDial'
 import SpeedDialIcon from '@mui/material/SpeedDialIcon'
 import { useRouter } from 'next/navigation'
@@ -13,7 +15,7 @@ const AddPostButton = () => {
 				right: 16,
 				'& .MuiFab-primary': {
 					bgcolor: '#1976d2',
-					color: '#fff',
+					color: '#ffffff',
 					'&:hover': {
 						bgcolor: '#115293',
 					},

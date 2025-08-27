@@ -4,9 +4,9 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import { useParams, usePathname } from 'next/navigation'
-import CommentButton from './headerParts/CommentButton'
-import ToggleThemeButton from './headerParts/ToggleThemeButton'
-import LeftSide from './headerParts/LeftSide'
+import ToggleThemeButton from './parts/ToggleThemeButton'
+import CommentButton from './parts/CommentButton'
+import LeftSide from './parts/LeftSide'
 
 const Header = () => {
 	const pathname = usePathname()

@@ -1,9 +1,8 @@
 import { getPostCommentsByIdThunk } from '@/redux/post/operations'
 import { useEffect } from 'react'
-import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 
-const useGetPostComments = id => {
+const useGetPostComments = (id, setSnackbar) => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -11,10 +10,13 @@ const useGetPostComments = id => {
 			try {
 				await dispatch(getPostCommentsByIdThunk(id)).unwrap()
 			} catch (error) {
-				toast.error(error)
+				setSnackbar({
+					open: true,
+					message: error.message,
+				})
 			}
 		})()
-	}, [dispatch, id])
+	}, [dispatch, id, setSnackbar])
 }
 
 export default useGetPostComments

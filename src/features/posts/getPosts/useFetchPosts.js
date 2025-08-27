@@ -3,21 +3,23 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { initialValues } from './initialValues'
-import toast from 'react-hot-toast'
 import { getPostsByQueryThunk } from '@/redux/post/operations'
 
-const useFetchPosts = () => {
+const useFetchPosts = setSnackbar => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		;(async () => {
 			try {
-				await dispatch(getPostsByQueryThunk(initialValues.query)).unwrap()
+				await dispatch(getPostsByQueryThunk(initialValues.title)).unwrap()
 			} catch (error) {
-				toast.error(error)
+				setSnackbar({
+					open: true,
+					message: error.message,
+				})
 			}
 		})()
-	}, [dispatch])
+	}, [dispatch, setSnackbar])
 }
 
 export default useFetchPosts

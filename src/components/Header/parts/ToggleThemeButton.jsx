@@ -1,3 +1,5 @@
+'use client'
+
 import { getIconByMode } from '@/utils/common/getIconByMode'
 import { IconButton } from '@mui/material'
 import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh'
@@ -8,7 +10,7 @@ import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 const ToggleThemeButton = () => {
 	const { mode, setMode } = useThemeContext()
 	return (
-		<IconButton color='inherit' onClick={() => toggleTheme(setMode)}>
+		<IconButton color='inherit' onClick={() => toggleTheme(mode, setMode)}>
 			{getIconByMode(mode, <Brightness4Icon />, <BrightnessHighIcon />)}
 		</IconButton>
 	)

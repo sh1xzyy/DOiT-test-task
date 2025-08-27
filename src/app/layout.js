@@ -24,6 +24,7 @@ const RootLayout = ({ children }) => {
 					name='keywords'
 					content='пошук постів, створення постів, видалення постів, керування контентом, блог'
 				/>
+				<link rel='icon' href='/favicon.svg' />
 				<title>DOiT MVP</title>
 			</head>
 			<body>

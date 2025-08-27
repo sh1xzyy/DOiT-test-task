@@ -1,3 +1,3 @@
-export const getStylesByMode = (mode, firstStyles, secondStyles) => {
-	return mode === 'light' ? firstStyles : secondStyles
+export const getStylesByMode = (mode, lightStyles, darkStyles) => {
+	return mode === 'light' ? lightStyles : darkStyles
 }

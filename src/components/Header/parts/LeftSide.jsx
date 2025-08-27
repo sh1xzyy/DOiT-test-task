@@ -1,3 +1,5 @@
+'use client'
+
 import { Box, IconButton, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { getTitleByUrl } from '@/utils/header/getTitleByUrl'

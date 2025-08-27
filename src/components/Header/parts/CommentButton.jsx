@@ -1,14 +1,20 @@
+'use client'
+
 import { Badge, IconButton } from '@mui/material'
 import CommentIcon from '@mui/icons-material/Comment'
-import { useDialogModalContext } from '@/context/DialogModalContext/useDialogModalContext'
+import { useDialogModalCommentContext } from '@/context/DialogModalCommentContext/useDialogModalCommentContext'
 import { selectPostComments } from '@/redux/post/selectors'
+import { useSelector } from 'react-redux'
 
 const CommentButton = () => {
-	const { setIsDialogModalOpen } = useDialogModalContext()
+	const { setIsDialogModalCommentOpen } = useDialogModalCommentContext()
 	const postComments = useSelector(selectPostComments)
 
 	return (
-		<IconButton color='inherit' onClick={() => setIsDialogModalOpen(true)}>
+		<IconButton
+			color='inherit'
+			onClick={() => setIsDialogModalCommentOpen(true)}
+		>
 			<Badge
 				badgeContent={postComments?.length > 9 ? '9+' : postComments?.length}
 				overlap='circular'

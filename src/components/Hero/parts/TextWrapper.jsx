@@ -1,3 +1,4 @@
+import { getStylesByMode } from '@/utils/common/getStylesByMode'
 import { Typography } from '@mui/material'
 
 const TextWrapper = ({ mode }) => {
@@ -12,7 +13,7 @@ const TextWrapper = ({ mode }) => {
 					fontSize: '48px',
 					letterSpacing: '0.03em',
 					mb: 2,
-					color: mode === 'light' ? '#000000' : '#ffffff',
+					color: getStylesByMode(mode, '#000000', '#ffffff'),
 				}}
 			>
 				Ласкаво просимо до DOiT MVP
@@ -22,7 +23,7 @@ const TextWrapper = ({ mode }) => {
 				component='p'
 				sx={{
 					mb: 4,
-					color: mode === 'light' ? '#535353' : '#bebebe',
+					color: getStylesByMode(mode, '#535353', '#bebebe'),
 				}}
 			>
 				Ми працюємо над MVP освітньої платформи. Приєлнуйтесь до команди!

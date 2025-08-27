@@ -1,31 +1,29 @@
 'use client'
 
-import { Box, Container } from '@mui/material'
+import { Box } from '@mui/material'
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 import { getStylesByMode } from '@/utils/common/getStylesByMode'
-import ActionButtons from './heroParts/ActionButtons'
-import TextWrapper from './heroParts/TextWrapper'
+import TextWrapper from './parts/TextWrapper'
+import ActionButtons from './parts/ActionButtons'
 
 const Hero = () => {
 	const { mode } = useThemeContext()
 	return (
-		<Container maxWidth='md'>
-			<Box
-				sx={{
-					background: getStylesByMode(
-						mode,
-						'linear-gradient(130deg, #d3ebff, #fce4ff)',
-						'linear-gradient(130deg, #386b61, #4c0e70)'
-					),
-					py: { xs: '50px', md: '60px' },
-					px: { xs: '20px', md: '25px' },
-					textAlign: 'center',
-				}}
-			>
-				<TextWrapper mode={mode} />
-				<ActionButtons />
-			</Box>
-		</Container>
+		<Box
+			sx={{
+				background: getStylesByMode(
+					mode,
+					'linear-gradient(130deg, #d3ebff, #fce4ff)',
+					'linear-gradient(130deg, #386b61, #4c0e70)'
+				),
+				py: { xs: '50px', md: '60px' },
+				px: { xs: '20px', md: '25px' },
+				textAlign: 'center',
+			}}
+		>
+			<TextWrapper mode={mode} />
+			<ActionButtons />
+		</Box>
 	)
 }
 
