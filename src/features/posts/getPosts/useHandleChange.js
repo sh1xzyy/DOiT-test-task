@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 export const useHandleChange = (value, handleSearch, setSnackbar, setError) => {
 	useEffect(() => {
-		if (!value) return
+		if (!value.trim()) return
 
 		const handler = setTimeout(() => {
 			handleSearch({ title: value }, null, setSnackbar, setError)
