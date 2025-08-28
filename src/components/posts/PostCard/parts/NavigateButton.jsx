@@ -8,7 +8,7 @@ const NavigateButton = ({ data: { router, id } }) => {
 			aria-label='learn more button'
 			onClick={() => router.push(`/posts/${id}`)}
 		>
-			<ArrowForwardIcon color='#bebebe' />
+			<ArrowForwardIcon sx={{ color: '#bebebe' }} />
 		</IconButton>
 	)
 }
