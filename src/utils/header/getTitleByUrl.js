@@ -1,4 +1,6 @@
 export const getTitleByUrl = (url = '/', id) => {
+	if (Number.isNaN(id)) return ''
+
 	if (url === '/') {
 		return 'DOiT MVP'
 	} else if (url === '/posts') {
