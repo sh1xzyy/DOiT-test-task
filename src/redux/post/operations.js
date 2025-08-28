@@ -9,7 +9,6 @@ export const getAllPostsThunk = createAsyncThunk(
 		try {
 			const response = await axios.get(`${API_KEY}/posts`, {
 				params: value,
-				headers: { 'Content-Type': 'application/json' },
 			})
 			return response.data
 		} catch (error) {

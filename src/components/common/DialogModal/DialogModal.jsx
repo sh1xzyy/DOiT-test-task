@@ -1,5 +1,7 @@
 'use client'
 
+import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
+import { getStylesByMode } from '@/utils/common/getStylesByMode'
 import { DialogTitle, Divider } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 
@@ -9,6 +11,7 @@ const DialogModal = ({
 	title,
 	children,
 }) => {
+	const { mode } = useThemeContext()
 	return (
 		<Dialog
 			open={isDialogModalOpen}
@@ -22,7 +25,11 @@ const DialogModal = ({
 				},
 			}}
 		>
-			<DialogTitle component='h4' id='alert-dialog-title' sx={{ p: '25px' }}>
+			<DialogTitle
+				component='h4'
+				id='alert-dialog-title'
+				sx={{ p: '25px', color: getStylesByMode(mode, '#181818', '#e9e9e9ff') }}
+			>
 				{title}
 			</DialogTitle>
 			<Divider />

@@ -29,7 +29,7 @@ const Comment = ({ data: { name, body } }) => {
 				secondary={
 					<Typography
 						sx={{
-							color: getStylesByMode(mode, '#181818', '#b3b3b3'),
+							color: getStylesByMode(mode, '#4d4d4d', '#b3b3b3'),
 						}}
 						variant='body1'
 						component='p'

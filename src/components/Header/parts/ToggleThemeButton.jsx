@@ -10,7 +10,11 @@ import { useThemeContext } from '@/context/ThemeContext/useThemeContext'
 const ToggleThemeButton = () => {
 	const { mode, setMode } = useThemeContext()
 	return (
-		<IconButton color='inherit' onClick={() => toggleTheme(mode, setMode)}>
+		<IconButton
+			color='inherit'
+			aria-label='toggle theme button'
+			onClick={() => toggleTheme(mode, setMode)}
+		>
 			{getIconByMode(mode, <Brightness4Icon />, <BrightnessHighIcon />)}
 		</IconButton>
 	)

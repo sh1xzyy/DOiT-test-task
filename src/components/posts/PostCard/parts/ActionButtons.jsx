@@ -14,7 +14,7 @@ const ActionButtons = ({ data: { router, id }, setSnackbar }) => {
 		<Stack
 			sx={{
 				width: '100%',
-				gap: { xs: '15px', sm: '20px' },
+				gap: { xs: '10px', sm: '10px' },
 			}}
 			direction={{ xs: 'column', sm: 'row' }}
 		>
@@ -22,7 +22,7 @@ const ActionButtons = ({ data: { router, id }, setSnackbar }) => {
 				variant='contained'
 				aria-label='delete button'
 				sx={{
-					bgcolor: '#f35b4a',
+					bgcolor: '#db4736',
 					color: '#ffffff',
 				}}
 				startIcon={<DeleteIcon sx={{ color: '#ffffff' }} />}

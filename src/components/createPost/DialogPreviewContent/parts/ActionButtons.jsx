@@ -18,7 +18,7 @@ const ActionButtons = () => {
 			sx={{
 				m: '10px',
 				flexDirection: 'row',
-				gap: '20px',
+				gap: '10px',
 				justifyContent: 'flex-end',
 			}}
 		>
@@ -42,7 +42,6 @@ const ActionButtons = () => {
 					bgcolor: '#2196f3',
 				}}
 				disabled={isSubmitted}
-				endIcon={<SaveIcon />}
 				onClick={() => {
 					handleSubmit()
 					setIsSubmitted(true)

@@ -29,8 +29,7 @@ const LeftSide = ({ pathname, id }) => {
 				variant='h6'
 				component={'div'}
 				sx={{
-					cursor: 'pointer',
-					fontSize: '1.25rem',
+					fontSize: '20px',
 					fontWeight: 500,
 					color: 'inherit',
 					transition: 'color linear 250ms',
