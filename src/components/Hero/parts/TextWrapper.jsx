@@ -20,7 +20,7 @@ const TextWrapper = ({ mode }) => {
 			</Typography>
 			<Typography
 				variant='body1'
-				component='h3'
+				component='h2'
 				sx={{
 					fontSize: '18px',
 					letterSpacing: '0.05em',
