@@ -1,60 +1,66 @@
 'use client'
 
 import Box from '@mui/material/Box'
-import { Field, Form, Formik } from 'formik'
-import useGetPostsByQuery from '@/features/posts/getPosts/useGetPostsByQuery'
-import { TextField } from 'formik-mui'
 import SearchIcon from '@mui/icons-material/Search'
 import { useState } from 'react'
 import SnackbarWrapper from '@/components/common/SnackbarWrapper/SnackbarWrapper'
-import { IconButton, InputAdornment } from '@mui/material'
-import { validationSchema } from '@/features/posts/getPosts/validationSchema'
+import { IconButton, InputAdornment, TextField } from '@mui/material'
+import useGetPostsByQuery from '@/features/posts/getPosts/useGetPostsByQuery'
+import { useHandleChange } from '@/features/posts/getPosts/useHandleChange'
 
 const SearchField = () => {
 	const [snackbar, setSnackbar] = useState({
 		open: false,
 		message: '',
 	})
-	const { handleSubmit, initialValues } = useGetPostsByQuery()
+	const [value, setValue] = useState('')
+	const [error, setError] = useState('')
+	const { handleSearch } = useGetPostsByQuery()
+
+	useHandleChange(value, handleSearch, setSnackbar, setError)
 
 	return (
 		<>
-			<Formik
-				initialValues={initialValues}
-				onSubmit={(values, actions) =>
-					handleSubmit(values, actions, setSnackbar)
-				}
-				validationSchema={validationSchema}
+			<Box
+				sx={{
+					position: 'relative',
+					width: '100%',
+					mb: '10px',
+				}}
 			>
-				<Form>
-					<Box
-						sx={{
-							position: 'relative',
-							width: '100%',
-							mb: '10px',
-						}}
-					>
-						<Field
-							component={TextField}
-							name='title'
-							variant='outlined'
-							sx={{
-								width: '100%',
-							}}
-							InputProps={{
-								startAdornment: (
-									<InputAdornment position='start'>
-										<IconButton type='submit' sx={{ color: '#bebebe' }}>
-											<SearchIcon />
-										</IconButton>
-									</InputAdornment>
-								),
-							}}
-							placeholder='Пошук за заголовком...'
-						/>
-					</Box>
-				</Form>
-			</Formik>
+				<TextField
+					variant='outlined'
+					fullWidth
+					value={value}
+					onChange={e => setValue(e.target.value)}
+					onKeyDown={e =>
+						e.key === 'Enter' &&
+						handleSearch({ title: value }, setValue, setSnackbar, setError)
+					}
+					error={!!error}
+					helperText={error}
+					InputProps={{
+						startAdornment: (
+							<InputAdornment position='start'>
+								<IconButton
+									onClick={() =>
+										handleSearch(
+											{ title: value },
+											setValue,
+											setSnackbar,
+											setError
+										)
+									}
+									sx={{ color: '#bebebe' }}
+								>
+									<SearchIcon />
+								</IconButton>
+							</InputAdornment>
+						),
+					}}
+					placeholder='Пошук за заголовком...'
+				/>
+			</Box>
 			<SnackbarWrapper snackbar={snackbar} setSnackbar={setSnackbar} />
 		</>
 	)

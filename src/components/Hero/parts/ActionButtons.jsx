@@ -6,12 +6,16 @@ import Link from 'next/link'
 
 const ActionButtons = () => {
 	return (
-		<Stack justifyContent='center' direction='row' spacing={3}>
+		<Stack
+			justifyContent='center'
+			direction={{ xs: 'column', sm: 'row' }}
+			spacing={{ xs: 2, sm: 3 }}
+		>
 			<Button
 				sx={{
 					bgcolor: '#2196f3',
 					color: '#ffffff',
-					px: { xs: '15x', md: '20px' },
+					px: { xs: '15px', md: '20px' },
 					':hover': {
 						bgcolor: '#0a70c4ff',
 					},
@@ -24,7 +28,7 @@ const ActionButtons = () => {
 			</Button>
 			<Button
 				sx={{
-					px: { xs: '15x', md: '20px' },
+					px: { xs: '15px', md: '20px' },
 				}}
 				href='/posts/create'
 				component={Link}

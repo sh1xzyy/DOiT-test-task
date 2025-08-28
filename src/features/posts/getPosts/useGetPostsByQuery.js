@@ -1,16 +1,25 @@
 'use client'
 
-import { getPostsByQueryThunk } from '@/redux/post/operations'
 import { useDispatch } from 'react-redux'
-import { initialValues } from './initialValues'
+import { validate } from './validate'
+import { filterPosts } from '@/redux/post/slice'
 
 const useGetPostsByQuery = () => {
 	const dispatch = useDispatch()
 
-	const handleSubmit = async (query, actions, setSnackbar) => {
+	const handleSearch = async (value, setValue, setSnackbar, setError) => {
 		try {
-			await dispatch(getPostsByQueryThunk(query)).unwrap()
-			actions.resetForm()
+			const error = validate(value.title)
+
+			if (error) {
+				setError(error)
+				return
+			}
+			setError('')
+
+			dispatch(filterPosts(value))
+
+			if (setValue) setValue('')
 		} catch (error) {
 			setSnackbar({
 				open: true,
@@ -19,7 +28,7 @@ const useGetPostsByQuery = () => {
 		}
 	}
 
-	return { initialValues, handleSubmit }
+	return { handleSearch }
 }
 
 export default useGetPostsByQuery

@@ -2,8 +2,7 @@
 
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { initialValues } from './initialValues'
-import { getPostsByQueryThunk } from '@/redux/post/operations'
+import { getAllPostsThunk } from '@/redux/post/operations'
 
 const useFetchPosts = setSnackbar => {
 	const dispatch = useDispatch()
@@ -11,7 +10,7 @@ const useFetchPosts = setSnackbar => {
 	useEffect(() => {
 		;(async () => {
 			try {
-				await dispatch(getPostsByQueryThunk(initialValues.title)).unwrap()
+				await dispatch(getAllPostsThunk('')).unwrap()
 			} catch (error) {
 				setSnackbar({
 					open: true,

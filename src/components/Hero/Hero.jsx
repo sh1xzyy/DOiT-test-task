@@ -16,8 +16,8 @@ const Hero = () => {
 					'linear-gradient(130deg, #d3ebff, #fce4ff)',
 					'linear-gradient(130deg, #386b61, #4c0e70)'
 				),
-				py: { xs: '50px', md: '60px' },
-				px: { xs: '20px', md: '25px' },
+				py: { xs: '40px', md: '60px' },
+				px: { xs: '15px', md: '25px' },
 				textAlign: 'center',
 			}}
 		>

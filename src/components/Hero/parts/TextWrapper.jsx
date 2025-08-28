@@ -20,7 +20,7 @@ const TextWrapper = ({ mode }) => {
 			</Typography>
 			<Typography
 				variant='body1'
-				component='p'
+				component='h3'
 				sx={{
 					mb: 4,
 					color: getStylesByMode(mode, '#535353', '#bebebe'),
