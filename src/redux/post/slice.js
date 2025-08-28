@@ -4,11 +4,12 @@ import {
 	deletePostByIdThunk,
 	getPostCommentsByIdThunk,
 	getPostInfoByIdThunk,
-	getPostsByQueryThunk,
+	getAllPostsThunk,
 } from './operations'
 
 const initialState = {
-	postsList: [],
+	allPosts: [],
+	filteredList: [],
 	isLoading: false,
 	postInfo: {},
 	postComments: [],
@@ -17,15 +18,25 @@ const initialState = {
 const postSlice = createSlice({
 	name: 'post',
 	initialState,
+	reducers: {
+		filterPosts(state, action) {
+			const value = action.payload.title
+			state.filteredList = state.allPosts.filter(post =>
+				post.title.toLowerCase().includes(value)
+			)
+		},
+	},
 	extraReducers: builder => {
 		builder
-			.addCase(getPostsByQueryThunk.fulfilled, (state, action) => {
-				state.postsList = action.payload
+			.addCase(getAllPostsThunk.fulfilled, (state, action) => {
+				state.allPosts = action.payload
+				state.filteredList = action.payload
 				state.isLoading = false
 			})
 			.addCase(deletePostByIdThunk.fulfilled, (state, action) => {
 				const id = action.meta.arg
-				state.postsList = state.postsList.filter(post => post.id !== id)
+				state.allPosts = state.allPosts.filter(post => post.id !== id)
+				state.filteredList = state.filteredList.filter(post => post.id !== id)
 				state.isLoading = false
 			})
 			.addCase(getPostCommentsByIdThunk.fulfilled, (state, action) => {
@@ -37,12 +48,13 @@ const postSlice = createSlice({
 				state.isLoading = false
 			})
 			.addCase(createNewPostThunk.fulfilled, (state, action) => {
-				state.postsList.push(action.payload)
+				state.allPosts.push(action.payload)
+				state.filteredList.push(action.payload)
 				state.isLoading = false
 			})
 			.addMatcher(
 				isAnyOf(
-					getPostsByQueryThunk.pending,
+					getAllPostsThunk.pending,
 					getPostInfoByIdThunk.pending,
 					deletePostByIdThunk.pending,
 					getPostCommentsByIdThunk.pending,
@@ -54,7 +66,7 @@ const postSlice = createSlice({
 			)
 			.addMatcher(
 				isAnyOf(
-					getPostsByQueryThunk.rejected,
+					getAllPostsThunk.rejected,
 					getPostInfoByIdThunk.rejected,
 					deletePostByIdThunk.rejected,
 					getPostCommentsByIdThunk.rejected,
@@ -67,4 +79,5 @@ const postSlice = createSlice({
 	},
 })
 
+export const { filterPosts } = postSlice.actions
 export default postSlice.reducer

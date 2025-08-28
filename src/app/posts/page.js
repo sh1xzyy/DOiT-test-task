@@ -9,7 +9,7 @@ import AddPostButton from '@/components/posts/AddPostButton/AddPostButton'
 import SnackbarWrapper from '@/components/common/SnackbarWrapper/SnackbarWrapper'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectIsLoading, selectPostsList } from '@/redux/post/selectors'
+import { selectIsLoading, selectFilteredList } from '@/redux/post/selectors'
 import PostCardSkeleton from '@/components/posts/PostCardSkeleton/PostCardSkeleton'
 import PostCard from '@/components/posts/PostCard/PostCard'
 import useSkeletonCount from '@/hooks/skeletonCount/useSkeletonCount'
@@ -20,7 +20,7 @@ const Page = () => {
 		message: '',
 	})
 	const isLoading = useSelector(selectIsLoading)
-	const postsList = useSelector(selectPostsList)
+	const filteredList = useSelector(selectFilteredList)
 	const skeletonCount = useSkeletonCount()
 
 	useFetchPosts(setSnackbar)
@@ -37,7 +37,7 @@ const Page = () => {
 						/>
 					) : (
 						<PostsList
-							items={postsList}
+							items={filteredList}
 							renderItem={post => (
 								<PostCard key={post.id} data={post} type='common' />
 							)}

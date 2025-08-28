@@ -3,13 +3,13 @@ import axios from 'axios'
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 
-export const getPostsByQueryThunk = createAsyncThunk(
-	'/posts',
-	async (query, { rejectWithValue }) => {
+export const getAllPostsThunk = createAsyncThunk(
+	'/posts/getAllPosts',
+	async (value, { rejectWithValue }) => {
 		try {
 			const response = await axios.get(`${API_KEY}/posts`, {
-				params: query,
-				headers: 'Content-type: application/json',
+				params: value,
+				headers: { 'Content-Type': 'application/json' },
 			})
 			return response.data
 		} catch (error) {
