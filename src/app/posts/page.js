@@ -11,8 +11,8 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectIsLoading, selectPostsList } from '@/redux/post/selectors'
 import PostCardSkeleton from '@/components/posts/PostCardSkeleton/PostCardSkeleton'
-import useSkeletonCount from '@/hooks/windowWidth/useSkeletonCount'
 import PostCard from '@/components/posts/PostCard/PostCard'
+import useSkeletonCount from '@/hooks/skeletonCount/useSkeletonCount'
 
 const Page = () => {
 	const [snackbar, setSnackbar] = useState({
