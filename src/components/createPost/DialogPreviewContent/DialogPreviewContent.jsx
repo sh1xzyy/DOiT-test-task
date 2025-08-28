@@ -11,7 +11,7 @@ const DialogPreviewContent = () => {
 	const { mode } = useThemeContext()
 	return (
 		<>
-			<DialogContent sx={{ p: '45px 50px' }}>
+			<DialogContent sx={{ p: '30px ' }}>
 				<Typography
 					variant='h5'
 					component='h4'
@@ -26,7 +26,7 @@ const DialogPreviewContent = () => {
 					variant='body1'
 					component='p'
 					sx={{
-						color: getStylesByMode(mode, '#181818', '#ffffff'),
+						color: getStylesByMode(mode, '#4d4d4d', '#e6e6e6'),
 					}}
 				>
 					{values.body}

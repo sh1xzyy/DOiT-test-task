@@ -23,7 +23,13 @@ const PostCard = ({ data: { id, title, body }, type }) => {
 
 	return (
 		<>
-			<Card sx={{ minWidth: '100%', position: 'relative' }}>
+			<Card
+				sx={{
+					minWidth: '100%',
+					position: 'relative',
+					boxShadow: '0px 5px 10px 0px rgba(0,0,0,0.25)',
+				}}
+			>
 				<CardContent
 					sx={{
 						p: '15px 15px 10px 15px',

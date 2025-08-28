@@ -16,6 +16,7 @@ const ActionButtons = () => {
 					bgcolor: '#2196f3',
 					color: '#ffffff',
 					px: { xs: '15px', md: '20px' },
+					py: '8px',
 					':hover': {
 						bgcolor: '#0a70c4ff',
 					},

@@ -7,7 +7,7 @@ const PostCardHeader = ({ data: { id, title, mode, type } }) => {
 		<CardHeader
 			avatar={
 				<Avatar
-					sx={{ bgcolor: getStylesByMode(mode, '#bebebe', '#ffffff') }}
+					sx={{ bgcolor: getStylesByMode(mode, '#bebebe', '#747474') }}
 					aria-label='avatar'
 				>
 					{title?.[0]?.toUpperCase()}
