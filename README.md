@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 DOiT MVP
 
-## Getting Started
+DOiT MVP – це веб-застосунок на Next.js та React з респонсивною версткою, де можна створювати, переглядати та видаляти пости, переглядати деталі постів та коментарі у модальних вікнах, перемикати тему сайту між світлою та темною, а також користуватися глобальною навігацією через Header та Drawer, включаючи сторінки помилок Not-found і Global-error.
 
-First, run the development server:
+# 📖 Основний функціонал
 
-```bash
+- 🏠 Головна сторінка: Hero з кнопками для створення поста та перегляду всіх постів.  
+- 📑 Header: динамічний заголовок, Drawer-меню, перемикач теми (світла/темна).  
+- 📂 Сторінка постів: перегляд усіх постів з пошуком, кнопки для видалення і переходу до деталей.  
+- 💬 Сторінка з додатковою інформацією: перегляд поста, коментарі у модальному вікні, кнопки для навігації.  
+- 📝 Створення поста: Stepper із покроковим додаванням title та опису, фінальний діалог із підтвердженням/редагуванням.  
+- ⚠️ Not-found та Global-error: обробка помилок із кнопками для повернення.  
+- 📱 **Р**: реалізована підтримка мобільної версії (responsive layout).  
+- 🎨 **UX**: працює перемикання теми, модальні вікна, drawer-меню, повідомлення про помилки.  
+
+# ⚡️ Локальний запуск
+ 1. Клонування репозиторію
+```
+git clone https://github.com/your-username/doit-mvp.git
+```
+ 2. Встановлення залежностей
+```
+npm install
+```
+ 3. Запуск у режимі розробки
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+ 4. Відкрити у браузері
+```
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 📂 Структура папок
+```
+DOiT-Test-Task/
+├── public/              # Статичні ресурси (іконки, зображення, favicon тощо)
+├── src/
+│   ├── app/             # Next.js маршрути та layout
+│   ├── components/      # UI-компоненти (Hero, Header, Drawer, common тощо)
+│   ├── context/         # React-контексти (тема, модальні вікна, кроки)
+│   ├── features/        # Фічі (posts - createNewPost, deletePost, getPost, getPostInfo, getPostComments)
+│   ├── hooks/           # Кастомні хуки
+│   ├── redux/           # Redux store, slice’и, selectors і operations
+│   ├── styles/          # Глобальні стилі
+│   └── utils/           # Хелпери, утиліти
+├── .env.local
+├── .gitignore
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.mjs
+├── package.json
+└── README.md
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# 💡 Рекомендації щодо покращення
 
-## Learn More
+- 🧪 **Юніт-тести**  
+  Додати тести для компонентів (Jest + React Testing Library).  
+  Протестувати логіку form validation та ред’юсерів Redux.  
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 🔄 **Використання RTK Query**  
+  Для запитів до API замість кастомних хуків. Це зменшить код, дасть кешування та рефреш даних «з коробки».  
