@@ -1,7 +1,7 @@
 'use client'
 
 import useGetPostInfo from '@/features/posts/getPostInfo/useGetPostInfo'
-import { selectPostInfo } from '@/redux/post/selectors'
+import { selectIsLoading, selectPostInfo } from '@/redux/post/selectors'
 import { Container } from '@mui/material'
 import { notFound, useParams } from 'next/navigation'
 import { useSelector } from 'react-redux'
@@ -13,6 +13,7 @@ import PostCard from '../../../components/posts/PostCard/PostCard'
 import DialogModal from '@/components/common/DialogModal/DialogModal'
 import DialogCommentContent from '@/components/comments/DialogCommentContent/DialogCommentContent'
 import SnackbarWrapper from '@/components/common/SnackbarWrapper/SnackbarWrapper'
+import Loader from '@/components/common/Loader/Loader'
 
 const Page = () => {
 	const { isDialogModalCommentOpen, setIsDialogModalCommentOpen } =
@@ -22,6 +23,7 @@ const Page = () => {
 		message: '',
 	})
 	const postInfo = useSelector(selectPostInfo)
+	const isLoading = useSelector(selectIsLoading)
 	const { id } = useParams()
 
 	useEffect(() => {
@@ -34,6 +36,10 @@ const Page = () => {
 
 	useGetPostInfo(id, setSnackbar)
 	useGetPostComments(id, setSnackbar)
+
+	if (isLoading || Object.keys(postInfo).length === 0) {
+		return <Loader />
+	}
 
 	return (
 		<>
